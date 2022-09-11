@@ -10,7 +10,6 @@ def write_db(data):
     connection = connect_db()
     cursor = connection.cursor()
     for dataout in data:
-        # print("data to insert",dataout)
         query = f""" INSERT INTO public.names (name) VALUES ('{dataout}') """ 
         cursor.execute(query)
         connection.commit()
@@ -59,16 +58,12 @@ def get_servicesToWrite(url_site):
     
 
 def get_servicesIterable(url):
-    # print(f'Dato={dato}')
     response = requests.get(url)
     if response.status_code == 200:
         results = response.json().get('results')
         name = results[0].get('name').get('first')
         print(name)
-    # else:
-    #     print("error: ", response.status_code)
-  
-
+        
 if __name__ == '__main__':
 
     
