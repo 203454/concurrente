@@ -19,7 +19,7 @@ class Hilo(Thread):
 
     def __init__(self, id):
         Thread.__init__(self)
-        self.id=id
+        self.id = id
 
     def run(self):
         semaforo.acquire() #Inicializa semáforo, lo adquiere
@@ -27,8 +27,9 @@ class Hilo(Thread):
         semaforo.release() #Libera un semáforo e incrementa la variable semáforo
 
 
-threads_semaphore = [Hilo(1),Hilo(2),Hilo(3),Hilo(4),Hilo(5)]
+threads_semaphore = [Hilo(1),Hilo(2),Hilo(3)]
 x=1
+
 
 for t in threads_semaphore:
     t.start()
