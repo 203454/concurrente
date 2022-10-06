@@ -1,0 +1,51 @@
+import threading
+import time
+import random
+PRODUCTORES = 10
+CONSUMIDORES = 20
+
+
+
+class Consumo(threading.Thread):
+
+    almacen  = []
+
+    conta = 0
+
+    def __init__(self):
+        super(Consumo, self).__init__()
+        self.id  = Consumo.conta
+        Consumo.conta += 1
+        Consumo.almacen.append(threading.Lock())
+
+    
+    def queue(self):
+        # print(str(self.id))
+        return (self.id + 1) % CONSUMIDORES
+
+    def fill(self):
+        range_fill = random.randint(0, 100)
+
+        print(range_fill)
+        pass
+
+    def get():
+        
+        pass
+    
+    def run(self):
+        self.fill()
+
+def main():
+    personas = []
+
+    for i in range(CONSUMIDORES):
+        personas.append(Consumo())
+
+    for p in personas:
+        p.start()
+    pass
+
+
+if __name__ == '__main__':
+    main()
